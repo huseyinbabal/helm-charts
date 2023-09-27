@@ -24,15 +24,17 @@ jobs:
           ref: gh-pages
 
       - name: Set git 'user.name' and 'user.email'
+        id: git-config
         run: |
           git config --global user.name "${{ env.GIT_USER }}"
           git config --global user.email ${{ env.GIT_EMAIL }}
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: Publish Chart
         run: |
-          helm package -d ${{ github.workspace }} ./kusadasi --version 0.0.0-${{ github.sha }}
+          helm package -d ${{ github.workspace }} ./kusadasi --version 0.0.0-${{ steps.git-config.outputs.sha_short }}
           helm repo index --url "${{ env.CHART_REPOSITORY }}" --merge ./index.yaml .
           git add .
-          git commit -m "${{ github.sha }} Botkube Helm chart release"
+          git commit -m "${{ steps.git-config.outputs.sha_short }} Botkube Helm chart release"
           git push
 
