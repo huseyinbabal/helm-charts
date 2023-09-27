@@ -3,7 +3,7 @@ entries:
   kusadasi:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-09-27T09:32:32.465621917Z"
+    created: "2023-09-27T09:36:46.244645412Z"
     description: A Helm chart for Kubernetes
     digest: 1433c698d584a7d8cde7ca1c368a3ce7d2486b4bf6e7ce2d986f7db7bb0d0aba
     name: kusadasi
@@ -11,4 +11,14 @@ entries:
     urls:
     - https://huseyinbabal.github.io/helm-charts/kusadasi-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-27T09:32:32.464932606Z"
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-09-27T09:36:46.244198345Z"
+    description: A Helm chart for Kubernetes
+    digest: 8a93620098587aeaf2024556f8039cd5dfe41ddaebd589663470ef4d4dde0965
+    name: kusadasi
+    type: application
+    urls:
+    - https://huseyinbabal.github.io/helm-charts/kusadasi-0.0.0-0645a3a1c4f6e5f25ba1a1779339d3016c3e2aea.tgz
+    version: 0.0.0-0645a3a1c4f6e5f25ba1a1779339d3016c3e2aea
+generated: "2023-09-27T09:36:46.24351015Z"
