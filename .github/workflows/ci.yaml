@@ -7,6 +7,8 @@ on:
 
 env:
   CHART_REPOSITORY: https://huseyinbabal.github.io/helm-charts
+  GIT_USER: github-actions[bot]
+  GIT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
 
 jobs:
   release:
@@ -20,6 +22,11 @@ jobs:
         with:
           path: .
           ref: gh-pages
+
+      - name: Set git 'user.name' and 'user.email'
+        run: |
+          git config --global user.name "${{ env.GIT_USER }}"
+          git config --global user.email ${{ env.GIT_EMAIL }}
 
       - name: Publish Chart
         run: |
