@@ -30,7 +30,7 @@ jobs:
 
       - name: Publish Chart
         run: |
-          helm package -d ${{ github.workspace }} ./kusadasi
+          helm package -d ${{ github.workspace }} ./kusadasi --version ${{ github.sha }}
           helm repo index --url "${{ env.CHART_REPOSITORY }}" --merge ./index.yaml .
           git add .
           git commit -m "${{ github.sha }} Botkube Helm chart release"
