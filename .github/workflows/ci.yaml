@@ -1,0 +1,31 @@
+name: Chart Release
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  CHART_REPOSITORY: https://huseyinbabal.github.io/helm-charts
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - name: Checkout to gh-pages for Helm
+        uses: actions/checkout@v4
+        with:
+          path: .
+          ref: gh-pages
+
+      - name: Publish Chart
+        run: |
+          helm package -d ${{ github.workspace }} ./kusadasi
+          helm repo index --url "${{ env.CHART_REPOSITORY }}" --merge ./index.yaml .
+          git add .
+          git commit -m "${{ github.sha }} Botkube Helm chart release"
+          git push
+
